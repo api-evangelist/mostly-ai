@@ -1,0 +1,499 @@
+openapi: 3.1.0
+info:
+  title: MOSTLY AI Platform REST API
+  version: "v2"
+  description: |
+    REST API for the hosted MOSTLY AI synthetic-data Platform. Lets you
+    manage connectors, generators (TabularARGN-powered models), synthetic
+    datasets, runs, synthetic probes, datasets, computes, and your account.
+
+    Authentication uses an API key supplied via the `X-MOSTLY-API-KEY`
+    header. Keys are issued from the user profile menu in the MOSTLY AI web
+    application. A missing or invalid key returns `401 Unauthorized`.
+  contact:
+    name: MOSTLY AI
+    url: https://api-docs.mostly.ai/
+servers:
+  - url: https://app.mostly.ai/api/v2
+    description: MOSTLY AI hosted Platform
+security:
+  - apiKey: []
+tags:
+  - name: About
+  - name: Users
+  - name: Connectors
+  - name: Generators
+  - name: Synthetic Datasets
+  - name: Synthetic Probes
+  - name: Datasets
+  - name: Computes
+  - name: Organizations
+  - name: Models
+paths:
+  /about:
+    get:
+      tags: [About]
+      operationId: getAbout
+      summary: Retrieve general info about the service.
+      responses:
+        "200": { description: Success }
+  /users/me:
+    get:
+      tags: [Users]
+      operationId: getMe
+      summary: Retrieve information about the current user.
+      responses:
+        "200": { description: Success }
+  /users/me/settings:
+    get:
+      tags: [Users]
+      operationId: getMySettings
+      summary: Get current user settings.
+      responses:
+        "200": { description: Success }
+    patch:
+      tags: [Users]
+      operationId: updateMySettings
+      summary: Update current user settings.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "200": { description: Success }
+  /users/me/key:
+    post:
+      tags: [Users]
+      operationId: rotateApiKey
+      summary: Generate or rotate the current user's API key.
+      responses:
+        "200": { description: Success }
+  /users/me/notifications:
+    get:
+      tags: [Users]
+      operationId: listMyNotifications
+      summary: List notifications for the current user.
+      responses:
+        "200": { description: Success }
+  /connectors:
+    get:
+      tags: [Connectors]
+      operationId: listConnectors
+      summary: List connectors.
+      parameters:
+        - { name: offset, in: query, schema: { type: integer, default: 0 } }
+        - { name: limit, in: query, schema: { type: integer, default: 50 } }
+        - { name: searchTerm, in: query, schema: { type: string } }
+        - { name: visibility, in: query, schema: { type: string, enum: [PRIVATE, PUBLIC] } }
+      responses:
+        "200": { description: Success }
+    post:
+      tags: [Connectors]
+      operationId: createConnector
+      summary: Create a connector.
+      parameters:
+        - { name: testConnection, in: query, schema: { type: boolean } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "201": { description: Created }
+  /connectors/{id}:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Connectors]
+      operationId: getConnector
+      summary: Get a connector.
+      responses:
+        "200": { description: Success }
+    patch:
+      tags: [Connectors]
+      operationId: updateConnector
+      summary: Update a connector.
+      parameters:
+        - { name: testConnection, in: query, schema: { type: boolean } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "200": { description: Success }
+    delete:
+      tags: [Connectors]
+      operationId: deleteConnector
+      summary: Delete a connector.
+      responses:
+        "204": { description: Deleted }
+  /connectors/{id}/locations:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Connectors]
+      operationId: listConnectorLocations
+      summary: List locations available through a connector.
+      parameters:
+        - { name: prefix, in: query, schema: { type: string } }
+      responses:
+        "200": { description: Success }
+  /connectors/{id}/schema:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Connectors]
+      operationId: getConnectorSchema
+      summary: Retrieve schema for a connector location.
+      parameters:
+        - { name: location, in: query, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Success }
+  /connectors/{id}/query:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Connectors]
+      operationId: queryConnector
+      summary: Run a query through a connector.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "200": { description: Success }
+  /connectors/{id}/read-data:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Connectors]
+      operationId: readConnectorData
+      summary: Read data through a connector.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "200": { description: Success }
+  /connectors/{id}/write-data:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Connectors]
+      operationId: writeConnectorData
+      summary: Write data through a connector.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "200": { description: Success }
+  /generators:
+    get:
+      tags: [Generators]
+      operationId: listGenerators
+      summary: List generators.
+      responses:
+        "200": { description: Success }
+    post:
+      tags: [Generators]
+      operationId: createGenerator
+      summary: Create a generator.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "201": { description: Created }
+  /generators/{id}:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Generators]
+      operationId: getGenerator
+      summary: Get a generator.
+      responses:
+        "200": { description: Success }
+    patch:
+      tags: [Generators]
+      operationId: updateGenerator
+      summary: Update a generator.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "200": { description: Success }
+    delete:
+      tags: [Generators]
+      operationId: deleteGenerator
+      summary: Delete a generator.
+      responses:
+        "204": { description: Deleted }
+  /generators/{id}/config:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Generators]
+      operationId: getGeneratorConfig
+      summary: Get a generator's config.
+      responses:
+        "200": { description: Success }
+  /generators/{id}/clone:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Generators]
+      operationId: cloneGenerator
+      summary: Clone a generator.
+      responses:
+        "201": { description: Created }
+  /generators/{id}/training/start:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Generators]
+      operationId: startGeneratorTraining
+      summary: Start training a generator.
+      responses:
+        "200": { description: Success }
+  /generators/{id}/training/cancel:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Generators]
+      operationId: cancelGeneratorTraining
+      summary: Cancel a generator's training job.
+      responses:
+        "200": { description: Success }
+  /generators/{id}/training:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Generators]
+      operationId: getGeneratorTraining
+      summary: Get a generator's training status.
+      responses:
+        "200": { description: Success }
+  /generators/{id}/tables:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Generators]
+      operationId: listGeneratorTables
+      summary: List a generator's tables.
+      responses:
+        "200": { description: Success }
+  /generators/{id}/export-to-file:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Generators]
+      operationId: exportGenerator
+      summary: Export a generator to a file.
+      responses:
+        "200": { description: Success }
+  /generators/import-from-file:
+    post:
+      tags: [Generators]
+      operationId: importGenerator
+      summary: Import a generator from a file.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file: { type: string, format: binary }
+      responses:
+        "201": { description: Created }
+  /synthetic-datasets:
+    get:
+      tags: [Synthetic Datasets]
+      operationId: listSyntheticDatasets
+      summary: List synthetic datasets.
+      responses:
+        "200": { description: Success }
+    post:
+      tags: [Synthetic Datasets]
+      operationId: createSyntheticDataset
+      summary: Create a synthetic dataset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "201": { description: Created }
+  /synthetic-datasets/{id}:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Synthetic Datasets]
+      operationId: getSyntheticDataset
+      summary: Get a synthetic dataset.
+      responses:
+        "200": { description: Success }
+    patch:
+      tags: [Synthetic Datasets]
+      operationId: updateSyntheticDataset
+      summary: Update a synthetic dataset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "200": { description: Success }
+    delete:
+      tags: [Synthetic Datasets]
+      operationId: deleteSyntheticDataset
+      summary: Delete a synthetic dataset.
+      responses:
+        "204": { description: Deleted }
+  /synthetic-datasets/{id}/generation/start:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Synthetic Datasets]
+      operationId: startSyntheticDatasetGeneration
+      summary: Start a synthetic dataset generation run.
+      responses:
+        "200": { description: Success }
+  /synthetic-datasets/{id}/generation/cancel:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    post:
+      tags: [Synthetic Datasets]
+      operationId: cancelSyntheticDatasetGeneration
+      summary: Cancel an in-progress generation run.
+      responses:
+        "200": { description: Success }
+  /synthetic-datasets/{id}/generation:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Synthetic Datasets]
+      operationId: getSyntheticDatasetGeneration
+      summary: Get generation status.
+      responses:
+        "200": { description: Success }
+  /synthetic-probes:
+    post:
+      tags: [Synthetic Probes]
+      operationId: createSyntheticProbe
+      summary: Run a synthetic probe (one-shot generation).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "200": { description: Success }
+  /datasets:
+    get:
+      tags: [Datasets]
+      operationId: listDatasets
+      summary: List source datasets.
+      responses:
+        "200": { description: Success }
+    post:
+      tags: [Datasets]
+      operationId: createDataset
+      summary: Create a source dataset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, additionalProperties: true }
+      responses:
+        "201": { description: Created }
+  /datasets/{id}:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Datasets]
+      operationId: getDataset
+      summary: Get a source dataset.
+      responses:
+        "200": { description: Success }
+    delete:
+      tags: [Datasets]
+      operationId: deleteDataset
+      summary: Delete a source dataset.
+      responses:
+        "204": { description: Deleted }
+  /computes:
+    get:
+      tags: [Computes]
+      operationId: listComputes
+      summary: List available compute resources.
+      responses:
+        "200": { description: Success }
+  /computes/{id}:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Computes]
+      operationId: getCompute
+      summary: Get a compute resource.
+      responses:
+        "200": { description: Success }
+  /organizations:
+    get:
+      tags: [Organizations]
+      operationId: listOrganizations
+      summary: List organizations.
+      responses:
+        "200": { description: Success }
+  /organizations/{id}:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Organizations]
+      operationId: getOrganization
+      summary: Get an organization.
+      responses:
+        "200": { description: Success }
+  /organizations/{id}/members:
+    parameters:
+      - $ref: "#/components/parameters/Id"
+    get:
+      tags: [Organizations]
+      operationId: listOrganizationMembers
+      summary: List members of an organization.
+      responses:
+        "200": { description: Success }
+  /models/{modelType}:
+    parameters:
+      - name: modelType
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [Models]
+      operationId: getModel
+      summary: Get model info for a model type.
+      responses:
+        "200": { description: Success }
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-MOSTLY-API-KEY
+      description: API key issued from the user profile in the MOSTLY AI web app.
