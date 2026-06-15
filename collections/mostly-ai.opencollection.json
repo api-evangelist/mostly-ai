@@ -1,0 +1,938 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MOSTLY AI Platform REST API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-MOSTLY-API-KEY",
+      "value": "{{X-MOSTLY-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "About",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve general info about the service.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/about"
+          },
+          "docs": "Retrieve general info about the service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve information about the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/users/me"
+          },
+          "docs": "Retrieve information about the current user."
+        },
+        {
+          "info": {
+            "name": "Get current user settings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/users/me/settings"
+          },
+          "docs": "Get current user settings."
+        },
+        {
+          "info": {
+            "name": "Update current user settings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.mostly.ai/api/v2/users/me/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update current user settings."
+        },
+        {
+          "info": {
+            "name": "Generate or rotate the current user's API key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/users/me/key"
+          },
+          "docs": "Generate or rotate the current user's API key."
+        },
+        {
+          "info": {
+            "name": "List notifications for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/users/me/notifications"
+          },
+          "docs": "List notifications for the current user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connectors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List connectors.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/connectors",
+            "params": [
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "searchTerm",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "visibility",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List connectors."
+        },
+        {
+          "info": {
+            "name": "Create a connector.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/connectors",
+            "params": [
+              {
+                "name": "testConnection",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a connector."
+        },
+        {
+          "info": {
+            "name": "Get a connector.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/connectors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a connector."
+        },
+        {
+          "info": {
+            "name": "Update a connector.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.mostly.ai/api/v2/connectors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "testConnection",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a connector."
+        },
+        {
+          "info": {
+            "name": "Delete a connector.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.mostly.ai/api/v2/connectors/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a connector."
+        },
+        {
+          "info": {
+            "name": "List locations available through a connector.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/connectors/:id/locations",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List locations available through a connector."
+        },
+        {
+          "info": {
+            "name": "Retrieve schema for a connector location.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/connectors/:id/schema",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "location",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve schema for a connector location."
+        },
+        {
+          "info": {
+            "name": "Run a query through a connector.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/connectors/:id/query",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run a query through a connector."
+        },
+        {
+          "info": {
+            "name": "Read data through a connector.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/connectors/:id/read-data",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Read data through a connector."
+        },
+        {
+          "info": {
+            "name": "Write data through a connector.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/connectors/:id/write-data",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Write data through a connector."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Generators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List generators.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators"
+          },
+          "docs": "List generators."
+        },
+        {
+          "info": {
+            "name": "Create a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a generator."
+        },
+        {
+          "info": {
+            "name": "Get a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a generator."
+        },
+        {
+          "info": {
+            "name": "Update a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.mostly.ai/api/v2/generators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a generator."
+        },
+        {
+          "info": {
+            "name": "Delete a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.mostly.ai/api/v2/generators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a generator."
+        },
+        {
+          "info": {
+            "name": "Get a generator's config.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/config",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a generator's config."
+        },
+        {
+          "info": {
+            "name": "Clone a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/clone",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Clone a generator."
+        },
+        {
+          "info": {
+            "name": "Start training a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/training/start",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Start training a generator."
+        },
+        {
+          "info": {
+            "name": "Cancel a generator's training job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/training/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel a generator's training job."
+        },
+        {
+          "info": {
+            "name": "Get a generator's training status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/training",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a generator's training status."
+        },
+        {
+          "info": {
+            "name": "List a generator's tables.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/tables",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a generator's tables."
+        },
+        {
+          "info": {
+            "name": "Export a generator to a file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/export-to-file",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export a generator to a file."
+        },
+        {
+          "info": {
+            "name": "Import a generator from a file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators/import-from-file",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Import a generator from a file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Synthetic Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List synthetic datasets.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets"
+          },
+          "docs": "List synthetic datasets."
+        },
+        {
+          "info": {
+            "name": "Create a synthetic dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a synthetic dataset."
+        },
+        {
+          "info": {
+            "name": "Get a synthetic dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a synthetic dataset."
+        },
+        {
+          "info": {
+            "name": "Update a synthetic dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a synthetic dataset."
+        },
+        {
+          "info": {
+            "name": "Delete a synthetic dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a synthetic dataset."
+        },
+        {
+          "info": {
+            "name": "Start a synthetic dataset generation run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id/generation/start",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Start a synthetic dataset generation run."
+        },
+        {
+          "info": {
+            "name": "Cancel an in-progress generation run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id/generation/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel an in-progress generation run."
+        },
+        {
+          "info": {
+            "name": "Get generation status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id/generation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get generation status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Synthetic Probes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Run a synthetic probe (one-shot generation).",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/synthetic-probes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run a synthetic probe (one-shot generation)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List source datasets.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/datasets"
+          },
+          "docs": "List source datasets."
+        },
+        {
+          "info": {
+            "name": "Create a source dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a source dataset."
+        },
+        {
+          "info": {
+            "name": "Get a source dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a source dataset."
+        },
+        {
+          "info": {
+            "name": "Delete a source dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.mostly.ai/api/v2/datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a source dataset."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Computes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available compute resources.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/computes"
+          },
+          "docs": "List available compute resources."
+        },
+        {
+          "info": {
+            "name": "Get a compute resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/computes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a compute resource."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List organizations.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/organizations"
+          },
+          "docs": "List organizations."
+        },
+        {
+          "info": {
+            "name": "Get an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/organizations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get an organization."
+        },
+        {
+          "info": {
+            "name": "List members of an organization.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/organizations/:id/members",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List members of an organization."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get model info for a model type.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/models/:modelType",
+            "params": [
+              {
+                "name": "modelType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get model info for a model type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
