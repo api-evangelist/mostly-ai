@@ -9,7 +9,7 @@ description: >-
   MOSTLY AI Platform, plus a REST API used by both the SDK and the web app.
   The SDK is powered by the TabularARGN model architecture and supports
   differential privacy.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Synthetic Data
   - Privacy
@@ -28,7 +28,7 @@ apis:
       REST API for the hosted MOSTLY AI Platform. Lets you manage connectors,
       generators, synthetic datasets, and runs. API keys are issued from the
       user profile menu in the web application.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://api-docs.mostly.ai/
     baseURL: https://app.mostly.ai
     tags:
@@ -47,7 +47,7 @@ apis:
       Open-source Python SDK (mostlyai, Apache 2.0) for training generators and
       producing synthetic data. Runs in LOCAL mode on user compute or CLIENT
       mode against the MOSTLY AI Platform. Powered by the TabularARGN model.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://mostly-ai.github.io/mostlyai/
     baseURL: https://github.com/mostly-ai/mostlyai
     tags:
