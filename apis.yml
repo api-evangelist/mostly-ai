@@ -67,6 +67,10 @@ apis:
       - type: License
         url: 'Apache 2.0'
 common:
+  - type: DomainSecurity
+    url: security/mostly-ai-domain-security.yml
+  - type: Authentication
+    url: authentication/mostly-ai-authentication.yml
   - type: Website
     url: https://mostly.ai/
   - type: Documentation
@@ -83,6 +87,8 @@ common:
     url: rate-limits/mostly-ai-rate-limits.yml
   - type: FinOps
     url: finops/mostly-ai-finops.yml
+  - url: https://mostly.ai/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

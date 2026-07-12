@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/mostly-ai-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: apiKey
+  type: apiKey
+  in: header
+  parameter: X-MOSTLY-API-KEY
+  description: API key issued from the user profile in the MOSTLY AI web app.
+  sources:
+  - openapi/mostly-ai-openapi.yml
