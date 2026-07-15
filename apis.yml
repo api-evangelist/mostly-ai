@@ -67,6 +67,8 @@ apis:
       - type: License
         url: 'Apache 2.0'
 common:
+  - type: AgenticAccess
+    url: agentic-access/mostly-ai-agentic-access.yml
   - type: DomainSecurity
     url: security/mostly-ai-domain-security.yml
   - type: Authentication
