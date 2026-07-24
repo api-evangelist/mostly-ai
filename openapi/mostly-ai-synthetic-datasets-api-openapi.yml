@@ -1,0 +1,134 @@
+openapi: 3.1.0
+info:
+  title: MOSTLY AI Platform REST About Synthetic Datasets API
+  version: v2
+  description: 'REST API for the hosted MOSTLY AI synthetic-data Platform. Lets you
+
+    manage connectors, generators (TabularARGN-powered models), synthetic
+
+    datasets, runs, synthetic probes, datasets, computes, and your account.
+
+
+    Authentication uses an API key supplied via the `X-MOSTLY-API-KEY`
+
+    header. Keys are issued from the user profile menu in the MOSTLY AI web
+
+    application. A missing or invalid key returns `401 Unauthorized`.
+
+    '
+  contact:
+    name: MOSTLY AI
+    url: https://api-docs.mostly.ai/
+servers:
+- url: https://app.mostly.ai/api/v2
+  description: MOSTLY AI hosted Platform
+security:
+- apiKey: []
+tags:
+- name: Synthetic Datasets
+paths:
+  /synthetic-datasets:
+    get:
+      tags:
+      - Synthetic Datasets
+      operationId: listSyntheticDatasets
+      summary: List synthetic datasets.
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - Synthetic Datasets
+      operationId: createSyntheticDataset
+      summary: Create a synthetic dataset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201':
+          description: Created
+  /synthetic-datasets/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      tags:
+      - Synthetic Datasets
+      operationId: getSyntheticDataset
+      summary: Get a synthetic dataset.
+      responses:
+        '200':
+          description: Success
+    patch:
+      tags:
+      - Synthetic Datasets
+      operationId: updateSyntheticDataset
+      summary: Update a synthetic dataset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Synthetic Datasets
+      operationId: deleteSyntheticDataset
+      summary: Delete a synthetic dataset.
+      responses:
+        '204':
+          description: Deleted
+  /synthetic-datasets/{id}/generation/start:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    post:
+      tags:
+      - Synthetic Datasets
+      operationId: startSyntheticDatasetGeneration
+      summary: Start a synthetic dataset generation run.
+      responses:
+        '200':
+          description: Success
+  /synthetic-datasets/{id}/generation/cancel:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    post:
+      tags:
+      - Synthetic Datasets
+      operationId: cancelSyntheticDatasetGeneration
+      summary: Cancel an in-progress generation run.
+      responses:
+        '200':
+          description: Success
+  /synthetic-datasets/{id}/generation:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      tags:
+      - Synthetic Datasets
+      operationId: getSyntheticDatasetGeneration
+      summary: Get generation status.
+      responses:
+        '200':
+          description: Success
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-MOSTLY-API-KEY
+      description: API key issued from the user profile in the MOSTLY AI web app.

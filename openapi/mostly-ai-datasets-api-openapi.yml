@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: MOSTLY AI Platform REST About Datasets API
+  version: v2
+  description: 'REST API for the hosted MOSTLY AI synthetic-data Platform. Lets you
+
+    manage connectors, generators (TabularARGN-powered models), synthetic
+
+    datasets, runs, synthetic probes, datasets, computes, and your account.
+
+
+    Authentication uses an API key supplied via the `X-MOSTLY-API-KEY`
+
+    header. Keys are issued from the user profile menu in the MOSTLY AI web
+
+    application. A missing or invalid key returns `401 Unauthorized`.
+
+    '
+  contact:
+    name: MOSTLY AI
+    url: https://api-docs.mostly.ai/
+servers:
+- url: https://app.mostly.ai/api/v2
+  description: MOSTLY AI hosted Platform
+security:
+- apiKey: []
+tags:
+- name: Datasets
+paths:
+  /datasets:
+    get:
+      tags:
+      - Datasets
+      operationId: listDatasets
+      summary: List source datasets.
+      responses:
+        '200':
+          description: Success
+    post:
+      tags:
+      - Datasets
+      operationId: createDataset
+      summary: Create a source dataset.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201':
+          description: Created
+  /datasets/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      tags:
+      - Datasets
+      operationId: getDataset
+      summary: Get a source dataset.
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+      - Datasets
+      operationId: deleteDataset
+      summary: Delete a source dataset.
+      responses:
+        '204':
+          description: Deleted
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-MOSTLY-API-KEY
+      description: API key issued from the user profile in the MOSTLY AI web app.
