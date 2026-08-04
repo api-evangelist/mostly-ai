@@ -1,0 +1,32 @@
+{
+  "provider": "mostly-ai",
+  "sources": [
+    "mostly-ai-about-api-openapi.yml",
+    "mostly-ai-computes-api-openapi.yml",
+    "mostly-ai-connectors-api-openapi.yml",
+    "mostly-ai-datasets-api-openapi.yml",
+    "mostly-ai-generators-api-openapi.yml",
+    "mostly-ai-models-api-openapi.yml",
+    "mostly-ai-organizations-api-openapi.yml",
+    "mostly-ai-synthetic-datasets-api-openapi.yml",
+    "mostly-ai-synthetic-probes-api-openapi.yml",
+    "mostly-ai-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "mostly-ai-about-api-openapi.yml",
+    "mostly-ai-computes-api-openapi.yml",
+    "mostly-ai-connectors-api-openapi.yml",
+    "mostly-ai-datasets-api-openapi.yml",
+    "mostly-ai-generators-api-openapi.yml",
+    "mostly-ai-models-api-openapi.yml",
+    "mostly-ai-organizations-api-openapi.yml",
+    "mostly-ai-synthetic-datasets-api-openapi.yml",
+    "mostly-ai-synthetic-probes-api-openapi.yml",
+    "mostly-ai-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
