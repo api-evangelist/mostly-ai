@@ -76,8 +76,6 @@ apis:
     url: https://github.com/mostly-ai/mostlyai
   - type: PyPI
     url: https://pypi.org/project/mostlyai/
-  - type: License
-    url: Apache 2.0
 - aid: mostly-ai:mostly-ai-about-api
   name: MOSTLY AI About API
   description: The About API from MOSTLY AI — 1 operation(s) for about.
@@ -179,6 +177,15 @@ apis:
   - type: OpenAPI
     url: openapi/mostly-ai-users-api-openapi.yml
 common:
+  - type: IssueTracker
+    url: https://github.com/mostly-ai/mostlyai/issues
+  - type: Releases
+    url: https://github.com/mostly-ai/mostlyai/releases
+  - type: ContributionGuide
+    url: https://github.com/mostly-ai/mostlyai/blob/main/CONTRIBUTING.md
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/mostly-ai/mostlyai/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/mostly-ai-agentic-access.yml
   - type: DomainSecurity
