@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "917d06b7-0152-4752-80be-6dea2973a0f6",
+      "name": "Computes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e023a351-d967-498e-95c5-93f87651a288",
+          "name": "List available compute resources.",
+          "request": {
+            "name": "List available compute resources.",
+            "description": {},
+            "url": {
+              "path": [
+                "computes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e1f181a-d476-47ab-8bf1-1ee635c24adc",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-MOSTLY-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe0e1399-3d5d-42c0-88c6-956fe023abf8",
+          "name": "Get a compute resource.",
+          "request": {
+            "name": "Get a compute resource.",
+            "description": {},
+            "url": {
+              "path": [
+                "computes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a36f5521-b39d-48ff-bb87-9d39cce273a3",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "computes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-MOSTLY-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.mostly.ai/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-MOSTLY-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bf907cbe-2787-494a-9ae9-aa52068af56d",
+    "name": "MOSTLY AI Platform REST About Computes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the hosted MOSTLY AI synthetic-data Platform. Lets you\nmanage connectors, generators (TabularARGN-powered models), synthetic\ndatasets, runs, synthetic probes, datasets, computes, and your account.\n\nAuthentication uses an API key supplied via the `X-MOSTLY-API-KEY`\nheader. Keys are issued from the user profile menu in the MOSTLY AI web\napplication. A missing or invalid key returns `401 Unauthorized`.\n\n\nContact Support:\n Name: MOSTLY AI",
+      "type": "text/plain"
+    }
+  }
+}

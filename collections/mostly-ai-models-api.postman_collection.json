@@ -1,0 +1,132 @@
+{
+  "item": [
+    {
+      "id": "4291a02c-2299-454a-b562-fa39af4d266a",
+      "name": "Models",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99d56285-09be-4000-91b0-660c481f9cf5",
+          "name": "Get model info for a model type.",
+          "request": {
+            "name": "Get model info for a model type.",
+            "description": {},
+            "url": {
+              "path": [
+                "models",
+                ":modelType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modelType",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e6070f7-5d8d-44d1-9658-efef58812b74",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models",
+                    ":modelType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelType",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-MOSTLY-API-KEY",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.mostly.ai/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-MOSTLY-API-KEY"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f2dcd53e-2931-4e2a-8f45-fc5ef5f5af94",
+    "name": "MOSTLY AI Platform REST About Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the hosted MOSTLY AI synthetic-data Platform. Lets you\nmanage connectors, generators (TabularARGN-powered models), synthetic\ndatasets, runs, synthetic probes, datasets, computes, and your account.\n\nAuthentication uses an API key supplied via the `X-MOSTLY-API-KEY`\nheader. Keys are issued from the user profile menu in the MOSTLY AI web\napplication. A missing or invalid key returns `401 Unauthorized`.\n\n\nContact Support:\n Name: MOSTLY AI",
+      "type": "text/plain"
+    }
+  }
+}

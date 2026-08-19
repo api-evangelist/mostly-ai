@@ -1,0 +1,257 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MOSTLY AI Platform REST About Generators API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-MOSTLY-API-KEY",
+      "value": "{{X-MOSTLY-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Generators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List generators.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators"
+          },
+          "docs": "List generators."
+        },
+        {
+          "info": {
+            "name": "Create a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a generator."
+        },
+        {
+          "info": {
+            "name": "Get a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a generator."
+        },
+        {
+          "info": {
+            "name": "Update a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.mostly.ai/api/v2/generators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a generator."
+        },
+        {
+          "info": {
+            "name": "Delete a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.mostly.ai/api/v2/generators/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a generator."
+        },
+        {
+          "info": {
+            "name": "Get a generator's config.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/config",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a generator's config."
+        },
+        {
+          "info": {
+            "name": "Clone a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/clone",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Clone a generator."
+        },
+        {
+          "info": {
+            "name": "Start training a generator.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/training/start",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Start training a generator."
+        },
+        {
+          "info": {
+            "name": "Cancel a generator's training job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/training/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel a generator's training job."
+        },
+        {
+          "info": {
+            "name": "Get a generator's training status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/training",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a generator's training status."
+        },
+        {
+          "info": {
+            "name": "List a generator's tables.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/tables",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List a generator's tables."
+        },
+        {
+          "info": {
+            "name": "Export a generator to a file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/generators/:id/export-to-file",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export a generator to a file."
+        },
+        {
+          "info": {
+            "name": "Import a generator from a file.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/generators/import-from-file",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Import a generator from a file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

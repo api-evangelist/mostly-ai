@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MOSTLY AI Platform REST About Users API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-MOSTLY-API-KEY",
+      "value": "{{X-MOSTLY-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve information about the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/users/me"
+          },
+          "docs": "Retrieve information about the current user."
+        },
+        {
+          "info": {
+            "name": "Get current user settings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/users/me/settings"
+          },
+          "docs": "Get current user settings."
+        },
+        {
+          "info": {
+            "name": "Update current user settings.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.mostly.ai/api/v2/users/me/settings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update current user settings."
+        },
+        {
+          "info": {
+            "name": "Generate or rotate the current user's API key.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/users/me/key"
+          },
+          "docs": "Generate or rotate the current user's API key."
+        },
+        {
+          "info": {
+            "name": "List notifications for the current user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/users/me/notifications"
+          },
+          "docs": "List notifications for the current user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

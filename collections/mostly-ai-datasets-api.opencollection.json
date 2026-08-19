@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MOSTLY AI Platform REST About Datasets API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-MOSTLY-API-KEY",
+      "value": "{{X-MOSTLY-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List source datasets.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/datasets"
+          },
+          "docs": "List source datasets."
+        },
+        {
+          "info": {
+            "name": "Create a source dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a source dataset."
+        },
+        {
+          "info": {
+            "name": "Get a source dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a source dataset."
+        },
+        {
+          "info": {
+            "name": "Delete a source dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.mostly.ai/api/v2/datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a source dataset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

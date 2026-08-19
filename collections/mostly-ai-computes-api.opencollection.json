@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MOSTLY AI Platform REST About Computes API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-MOSTLY-API-KEY",
+      "value": "{{X-MOSTLY-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Computes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available compute resources.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/computes"
+          },
+          "docs": "List available compute resources."
+        },
+        {
+          "info": {
+            "name": "Get a compute resource.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/computes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a compute resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

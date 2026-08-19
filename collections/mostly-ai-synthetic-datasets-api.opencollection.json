@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MOSTLY AI Platform REST About Synthetic Datasets API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-MOSTLY-API-KEY",
+      "value": "{{X-MOSTLY-API-KEY}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Synthetic Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List synthetic datasets.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets"
+          },
+          "docs": "List synthetic datasets."
+        },
+        {
+          "info": {
+            "name": "Create a synthetic dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a synthetic dataset."
+        },
+        {
+          "info": {
+            "name": "Get a synthetic dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a synthetic dataset."
+        },
+        {
+          "info": {
+            "name": "Update a synthetic dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a synthetic dataset."
+        },
+        {
+          "info": {
+            "name": "Delete a synthetic dataset.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a synthetic dataset."
+        },
+        {
+          "info": {
+            "name": "Start a synthetic dataset generation run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id/generation/start",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Start a synthetic dataset generation run."
+        },
+        {
+          "info": {
+            "name": "Cancel an in-progress generation run.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id/generation/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel an in-progress generation run."
+        },
+        {
+          "info": {
+            "name": "Get generation status.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.mostly.ai/api/v2/synthetic-datasets/:id/generation",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get generation status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
