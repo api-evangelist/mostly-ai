@@ -65,6 +65,11 @@ apis:
   tags:
   - SDK
   - Python
+  - Open-Source
+  - Apache 2.0
+  tags_raw:
+  - SDK
+  - Python
   - Open Source
   - Apache 2.0
   properties:
@@ -142,6 +147,8 @@ apis:
   humanURL: https://api-docs.mostly.ai/
   baseURL: https://app.mostly.ai
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
@@ -172,6 +179,8 @@ apis:
   humanURL: https://api-docs.mostly.ai/
   baseURL: https://app.mostly.ai
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
