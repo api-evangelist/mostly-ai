@@ -1,16 +1,7 @@
 {
   "provider": "mostly-ai",
   "sources": [
-    "mostly-ai-about-api-openapi.yml",
-    "mostly-ai-computes-api-openapi.yml",
-    "mostly-ai-connectors-api-openapi.yml",
-    "mostly-ai-datasets-api-openapi.yml",
-    "mostly-ai-generators-api-openapi.yml",
-    "mostly-ai-models-api-openapi.yml",
-    "mostly-ai-organizations-api-openapi.yml",
-    "mostly-ai-synthetic-datasets-api-openapi.yml",
-    "mostly-ai-synthetic-probes-api-openapi.yml",
-    "mostly-ai-users-api-openapi.yml"
+    "_original/mostly-ai-openapi.yml"
   ],
   "outputs": [
     "mostly-ai-about-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mostly-ai-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mostly-ai-about-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-computes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-connectors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-generators-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-organizations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-synthetic-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-synthetic-probes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mostly-ai-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
