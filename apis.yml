@@ -80,13 +80,14 @@ apis:
   tags:
   - SDK
   - Python
-  - Open-Source
+  - Open Source
   - Apache 2.0
   tags_raw:
   - SDK
   - Python
   - Open Source
   - Apache 2.0
+  - Open-Source
   properties:
   - type: Documentation
     url: https://docs.mostly.ai/python-sdk
