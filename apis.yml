@@ -202,6 +202,9 @@ apis:
   - type: OpenAPI
     url: openapi/mostly-ai-users-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/mostly-ai-capability-edges.yml
+    name: MOSTLY AI Business Capability Map
   - type: IssueTracker
     url: https://github.com/mostly-ai/mostlyai/issues
   - type: Releases

@@ -1,0 +1,36 @@
+slug: mostly-ai
+provider: MOSTLY AI
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Generators
+  spec_file: mostly-ai-generators-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.85
+  evidence: POST /generators/{id}/training/start  Start training a generator; GET /generators/{id}/training  Get
+    a generator's training status
+  reason: Generators are TabularARGN models; the operations create, configure, train, cancel training,
+    clone and export models. This is squarely ML model lifecycle management (MLOps), i.e. Artificial Intelligence
+    Management.
+- tag: Synthetic Datasets
+  spec_file: mostly-ai-synthetic-datasets-api-openapi.yml
+  capability_id: BC-610.60
+  capability_id_l1: BC-610
+  capability_name: Artificial Intelligence Management
+  confidence: 0.7
+  evidence: POST /synthetic-datasets/{id}/generation/start  Start a synthetic dataset generation run
+  reason: These operations run inference/generation jobs against trained TabularARGN generators to produce
+    synthetic data. That is operation of the AI model lifecycle on a data platform; mapped to Artificial
+    Intelligence Management, with some ambiguity versus plain data asset management.
